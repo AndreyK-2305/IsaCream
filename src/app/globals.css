@@ -63,26 +63,67 @@ a {
 .login-page {
   min-height: 100vh;
   display: grid;
-  grid-template-columns: minmax(320px, 440px) minmax(0, 1fr);
-  background: var(--surface);
+  place-items: center;
+  padding: 24px;
+  overflow: hidden;
+  position: relative;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(255, 196, 218, 0.9), transparent 28%),
+    radial-gradient(circle at 82% 12%, rgba(255, 208, 124, 0.82), transparent 26%),
+    radial-gradient(circle at 72% 86%, rgba(137, 201, 255, 0.72), transparent 30%),
+    linear-gradient(135deg, #fff7fb 0%, #f4f0ff 46%, #edf8ff 100%);
+}
+
+.login-page::before,
+.login-page::after {
+  content: "";
+  position: absolute;
+  border: 1px solid rgba(145, 35, 101, 0.18);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.login-page::before {
+  width: 440px;
+  height: 440px;
+  left: -180px;
+  bottom: -160px;
+}
+
+.login-page::after {
+  width: 320px;
+  height: 320px;
+  right: -130px;
+  top: -110px;
 }
 
 .login-panel {
+  width: min(100%, 430px);
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 28px;
-  padding: 48px;
-  border-right: 1px solid var(--line);
+  padding: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 24px 70px rgba(55, 38, 72, 0.18);
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(18px);
 }
 
 .login-brand {
   display: grid;
   gap: 14px;
+  justify-items: center;
+  text-align: center;
 }
 
 .login-brand img {
-  width: 128px;
+  width: 112px;
+  border-radius: 8px;
+  box-shadow: 0 14px 28px rgba(145, 35, 101, 0.16);
 }
 
 .login-brand h1,
@@ -109,22 +150,6 @@ a {
 .login-card {
   display: grid;
   gap: 16px;
-}
-
-.login-visual {
-  min-height: 100vh;
-  display: grid;
-  place-items: center;
-  padding: 36px;
-  background: #eef5ff;
-}
-
-.login-visual img {
-  width: min(100%, 620px);
-  max-height: calc(100vh - 72px);
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
 }
 
 .field {
@@ -810,7 +835,6 @@ a {
 }
 
 @media (max-width: 980px) {
-  .login-page,
   .dashboard,
   .grid-two,
   .inventory-columns,
@@ -819,10 +843,6 @@ a {
   .filter-grid,
   .report-grid {
     grid-template-columns: 1fr;
-  }
-
-  .login-visual {
-    min-height: auto;
   }
 
   .sidebar {
@@ -841,10 +861,13 @@ a {
 }
 
 @media (max-width: 640px) {
-  .login-panel,
   .dashboard-main,
   .sidebar {
     padding: 18px;
+  }
+
+  .login-panel {
+    padding: 24px;
   }
 
   .topbar,

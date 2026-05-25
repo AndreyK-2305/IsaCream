@@ -121,10 +121,6 @@ export function LoginForm() {
           </button>
         </form>
       </section>
-
-      <section className="login-visual" aria-label="Menu Isa Cream">
-        <img src="/img/menu.jpeg" alt="Menu de Isa Cream" />
-      </section>
     </main>
   )
 }
